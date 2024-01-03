@@ -207,12 +207,13 @@ class PresenceStatsResult {
 }
 
 class JoinEvent {
-  JoinEvent(this.user, this.client);
+  JoinEvent(this.user, this.client, this.connInfo);
 
   final String user;
   final String client;
+  final List<int> connInfo;
 
-  static JoinEvent from(proto.ClientInfo clientInfo) => JoinEvent(clientInfo.user, clientInfo.client);
+  static JoinEvent from(proto.ClientInfo clientInfo) => JoinEvent(clientInfo.user, clientInfo.client, clientInfo.connInfo);
 
   @override
   String toString() {
@@ -237,12 +238,13 @@ class ServerJoinEvent {
 }
 
 class LeaveEvent {
-  LeaveEvent(this.user, this.client);
+  LeaveEvent(this.user, this.client, this.connInfo);
 
   final String user;
   final String client;
+  final List<int> connInfo;
 
-  static LeaveEvent from(proto.ClientInfo clientInfo) => LeaveEvent(clientInfo.user, clientInfo.client);
+  static LeaveEvent from(proto.ClientInfo clientInfo) => LeaveEvent(clientInfo.user, clientInfo.client, clientInfo.connInfo);
 
   @override
   String toString() {
